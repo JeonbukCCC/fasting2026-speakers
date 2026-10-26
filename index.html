@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026 금식수련회 선택특강 강사 모집</title>
+<meta name="description" content="2026 전북 CCC 금식수련회 선택특강 강사 신청 (전북 CCC 간사 대상, 11월 1일 ~ 20일)">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
+<style>
+  /* 포스터 팔레트: 새벽 하늘, 인디고 타이틀, 페리윙클 산, 회색 바위 */
+  :root {
+    --ink: #1f1d3d; --muted: #5f6386; --line: #dcdcf0; --card: #fff;
+    --sky: #d6e8f8; --lavender: #e7e3f8; --dusk: #24263a;
+    --brand: #3a2b8c; --brand-2: #5a49c4; --brand-soft: #eceafb; --peri: #6f8ee8;
+    --sun: #fff4d6; --ok: #2f7d5a; --ok-soft: #e4f3ec; --warn: #a63d2f; --warn-soft: #fbece8;
+    --jeonju: #3a2b8c; --gunsan: #4c6fd6; --iksan: #3b3f55;
+    --display: "Anton", Pretendard, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; font-family: Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif; color: var(--ink); line-height: 1.55;
+    background: linear-gradient(180deg, var(--dusk) 0, var(--dusk) 420px, var(--lavender) 420px, var(--sky) 100%);
+    min-height: 100vh;
+  }
+  /* 포스터의 종이 질감 */
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: .07; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+
+  header.hero { background: var(--dusk); }
+  .hero-art { position: relative; max-width: 720px; margin: 0 auto; }
+  .hero-art img { display: block; width: 100%; height: auto; aspect-ratio: 1322 / 1400; object-fit: cover; }
+  .hero-art::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 28%; background: linear-gradient(180deg, rgba(36,38,58,0), var(--dusk)); }
+  .hero-band { position: relative; z-index: 1; max-width: 720px; margin: -96px auto 0; padding: 0 16px 84px; text-align: center; color: #fff; }
+  .hero-band .eyebrow { font-family: var(--display); font-size: 15px; letter-spacing: .14em; color: #b9c6f5; }
+  .hero-band h1 { margin: 4px 0 6px; font-size: clamp(26px, 7vw, 42px); font-weight: 900; letter-spacing: -.02em; line-height: 1.2; }
+  .hero-band .meta { display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 4px 12px; font-size: clamp(15px, 4vw, 19px); color: #e9ecff; }
+  .hero-band .meta span + span::before { content: "|"; margin-right: 12px; opacity: .5; }
+
+  main { margin-top: -56px; padding: 0 16px 48px; position: relative; }
+  nav.tabs { display: grid; grid-template-columns: repeat(2, 1fr); background: var(--card); border-radius: 16px; padding: 6px; gap: 4px; box-shadow: 0 10px 30px rgba(36,38,58,.25); }
+  nav.tabs button { border: 0; background: none; padding: 12px 6px; border-radius: 12px; font: inherit; font-weight: 700; font-size: 15px; color: var(--muted); cursor: pointer; }
+  nav.tabs button[aria-selected="true"] { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; }
+  section.panel { display: none; margin-top: 18px; }
+  section.panel.active { display: block; }
+  .card { background: var(--card); border-radius: 16px; padding: 20px; margin-bottom: 14px; box-shadow: 0 2px 10px rgba(58,43,140,.06); }
+  .card h2 { font-size: 18px; font-weight: 800; margin: 0 0 14px; color: var(--brand); }
+  .card h2 .num { display: inline-block; font-family: var(--display); font-weight: 400; font-size: 20px; color: var(--peri); margin-right: 8px; letter-spacing: .02em; }
+  label.field { display: block; margin-bottom: 14px; }
+  label.field > span { display: block; font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  label.field small { font-weight: 400; color: var(--muted); }
+  input[type=text] { width: 100%; font: inherit; font-size: 16px; padding: 11px 12px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); }
+  input:focus { outline: 2px solid var(--brand-2); outline-offset: 1px; }
+  .choices { display: grid; gap: 8px; margin-bottom: 14px; }
+  .choices.three { grid-template-columns: repeat(3, 1fr); }
+  .choices.two { grid-template-columns: repeat(2, 1fr); }
+  .choice { position: relative; display: flex; gap: 10px; align-items: flex-start; border: 1px solid var(--line); border-radius: 12px; padding: 12px; cursor: pointer; background: #fff; transition: border-color .15s, background .15s; }
+  .choice input { margin-top: 4px; accent-color: var(--brand); }
+  .choice:has(input:checked) { border-color: var(--brand-2); background: var(--brand-soft); box-shadow: inset 0 0 0 1px var(--brand-2); }
+  .choice .t { font-weight: 700; }
+  .choice .s { display: block; font-size: 13px; color: var(--muted); }
+  .sub { display: block; font-size: 14px; font-weight: 700; margin: 0 0 6px; }
+  .hidden { display: none !important; }
+  .btn { display: block; width: 100%; border: 0; border-radius: 14px; padding: 16px; font: inherit; font-size: 17px; font-weight: 800; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; cursor: pointer; box-shadow: 0 8px 20px rgba(58,43,140,.25); }
+  .btn:disabled { opacity: .5; cursor: wait; }
+  .btn.ghost { background: #fff; color: var(--brand); box-shadow: inset 0 0 0 2px var(--brand-2); margin-top: 10px; }
+  .msg { border-radius: 12px; padding: 12px 14px; font-size: 14px; margin-top: 12px; }
+  .msg.err { background: var(--warn-soft); color: #7d2a1e; }
+  .note { font-size: 13px; color: var(--muted); }
+  .info { display: grid; grid-template-columns: 72px 1fr; gap: 6px 12px; margin: 0; font-size: 15px; }
+  .info dt { color: var(--muted); }
+  .info dd { margin: 0; font-weight: 600; }
+  .lock-card { text-align: center; padding: 32px 20px; }
+  .lock-card .dday { font-family: var(--display); font-size: 64px; line-height: 1; color: var(--brand); }
+  .lock-card h2 { margin: 10px 0 6px; font-size: 20px; color: var(--ink); }
+  .done { text-align: center; padding: 28px 20px; }
+  .done .big { font-size: 21px; font-weight: 900; color: var(--brand); margin-bottom: 12px; }
+  dl.result { display: grid; grid-template-columns: 72px 1fr; gap: 8px 12px; margin: 0 auto; max-width: 360px; text-align: left; font-size: 15px; }
+  dl.result dt { color: var(--muted); }
+  dl.result dd { margin: 0; font-weight: 700; }
+  .total { display: flex; align-items: baseline; gap: 8px; }
+  .total b { font-family: var(--display); font-weight: 400; font-size: 56px; line-height: 1; color: var(--brand); }
+  .total span { font-weight: 700; }
+  .dist-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .dist { border-radius: 16px; padding: 16px; color: #fff; position: relative; overflow: hidden; }
+  .dist::after { content: ""; position: absolute; right: -18px; bottom: -18px; width: 70px; height: 70px; border-radius: 50%; background: var(--sun); opacity: .18; }
+  .dist .n { font-family: var(--display); font-size: 40px; line-height: 1.05; }
+  .dist .n small { font-family: Pretendard, sans-serif; font-size: 16px; font-weight: 700; margin-left: 2px; }
+  .dist .l { font-size: 14px; font-weight: 700; opacity: .9; }
+  ul.lec { list-style: none; margin: 0; padding: 0; }
+  ul.lec li { display: flex; gap: 10px; align-items: center; padding: 10px 0; border-bottom: 1px dashed var(--line); font-size: 15px; }
+  ul.lec li:last-child { border-bottom: 0; }
+  ul.lec .ttl { font-weight: 700; flex: 1; min-width: 0; overflow-wrap: anywhere; }
+  .pill { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 99px; background: var(--brand-soft); color: var(--brand); white-space: nowrap; }
+  .pill.d { background: #eef0f6; color: var(--muted); }
+  .demo { background: var(--sun); color: #6b5500; font-size: 13px; padding: 8px 16px; text-align: center; }
+  footer { text-align: center; font-size: 13px; color: var(--muted); padding: 0 16px 32px; }
+  footer .verse { font-family: var(--display); font-size: 18px; letter-spacing: .04em; color: var(--brand); margin-bottom: 4px; }
+  @media (max-width: 480px) { .dist-grid { grid-template-columns: 1fr; } .hero-band { margin-top: -64px; } }
+</style>
+</head>
+<body>
+<div class="demo hidden" id="demoBar">미리보기 모드입니다. Apps Script 주소(API_URL)를 넣으면 실제 신청이 저장됩니다.</div>
+<header class="hero">
+  <div class="hero-art">
+    <img src="hero.jpg" alt="NO WAY? GOD'S WAY! 길이 없는 곳에 길을 만드시는 하나님 (사 43:18-21)">
+  </div>
+  <div class="hero-band">
+    <div class="eyebrow">JEONBUK CCC · FOR STAFF</div>
+    <h1>2026 금식수련회<br>선택특강 강사 모집</h1>
+    <div class="meta"><span>전북 CCC 간사 대상</span><span>11월 1일(일) – 20일(금)</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-tab="apply" aria-selected="true">강사 신청</button>
+    <button role="tab" data-tab="status" aria-selected="false">신청 현황</button>
+  </nav>
+
+  <!-- 강사 신청 -->
+  <section class="panel active" id="panel-apply">
+    <div class="card">
+      <h2>모집 안내</h2>
+      <dl class="info">
+        <dt>대상</dt><dd>전북 CCC 간사</dd>
+        <dt>신청 기간</dt><dd>2026년 11월 1일(일) – 11월 20일(금)</dd>
+        <dt>수련회</dt><dd>12월 28일(월) – 30일(수) · 청정인성수련원</dd>
+        <dt>강의 형태</dt><dd>단강 또는 연강 중에서 골라 주세요</dd>
+      </dl>
+    </div>
+
+    <div class="card lock-card hidden" id="lockCard">
+      <div class="dday" id="lockBig"></div>
+      <h2 id="lockTitle"></h2>
+      <p class="note" id="lockText"></p>
+    </div>
+
+    <form id="applyForm" class="hidden" novalidate>
+      <div class="card">
+        <h2><span class="num">1</span>강사 정보</h2>
+        <span class="sub">지구</span>
+        <div class="choices three">
+          <label class="choice"><input type="radio" name="district" value="전주"><span class="t">전주</span></label>
+          <label class="choice"><input type="radio" name="district" value="군산"><span class="t">군산</span></label>
+          <label class="choice"><input type="radio" name="district" value="익산"><span class="t">익산</span></label>
+        </div>
+        <label class="field"><span>이름</span><input type="text" name="name" autocomplete="name" maxlength="20"></label>
+      </div>
+
+      <div class="card">
+        <h2><span class="num">2</span>강의</h2>
+        <label class="field"><span>제목</span><input type="text" name="title" maxlength="100" placeholder="선택특강 제목"></label>
+        <span class="sub">단강 또는 연강</span>
+        <div class="choices two">
+          <label class="choice"><input type="radio" name="mode" value="단강"><span><span class="t">단강</span><span class="s">한 번 진행하는 강의</span></span></label>
+          <label class="choice"><input type="radio" name="mode" value="연강"><span><span class="t">연강</span><span class="s">이어서 두 번 진행하는 강의</span></span></label>
+        </div>
+        <p class="note" style="margin:0">강의를 두 개 이상 하실 경우, 강의마다 한 번씩 신청해 주세요. 같은 지구·이름·제목으로 다시 신청하면 강의 형태만 바뀝니다.</p>
+      </div>
+
+      <button class="btn" id="submitBtn" type="submit">신청하기</button>
+      <div class="msg err hidden" id="formMsg"></div>
+    </form>
+
+    <div class="card done hidden" id="doneCard">
+      <div class="big" id="doneTitle">신청이 완료되었습니다</div>
+      <dl class="result" id="doneList"></dl>
+      <button class="btn ghost" id="againBtn" type="button">다른 강의 신청하기</button>
+    </div>
+  </section>
+
+  <!-- 신청 현황 -->
+  <section class="panel" id="panel-status">
+    <div class="card">
+      <h2>신청 현황</h2>
+      <div class="total"><b id="total">0</b><span>개 강의</span></div>
+    </div>
+    <div class="dist-grid" id="distGrid" style="margin-bottom:14px"></div>
+    <div class="card">
+      <h2>신청된 강의</h2>
+      <ul class="lec" id="lecList"></ul>
+      <p class="note hidden" id="lecEmpty" style="margin:0">아직 신청된 강의가 없습니다.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="verse">NO WAY? GOD'S WAY!</div>
+  길이 없는 곳에 길을 만드시는 하나님 · 사 43:18-21
+</footer>
+
+<script>
+const API_URL = '';
+const OPEN_AT = new Date('2026-11-01T00:00:00+09:00');
+const CLOSE_AT = new Date('2026-11-21T00:00:00+09:00'); // 11월 20일 자정까지
+const DISTRICTS = ['전주', '군산', '익산'];
+const DIST_COLOR = { 전주: 'var(--jeonju)', 군산: 'var(--gunsan)', 익산: 'var(--iksan)' };
+const DEMO = !API_URL;
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+/* ---------- API ---------- */
+async function apiGet(params) {
+  const res = await fetch(API_URL + '?' + new URLSearchParams(params));
+  return res.json();
+}
+async function apiPost(body) {
+  const res = await fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body) });
+  return res.json();
+}
+
+/* ---------- 탭 ---------- */
+document.querySelectorAll('nav.tabs button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('nav.tabs button').forEach(x => x.setAttribute('aria-selected', x === b));
+  document.querySelectorAll('section.panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + b.dataset.tab));
+  if (b.dataset.tab === 'status') loadStatus();
+}));
+
+/* ---------- 신청 기간 ---------- */
+function clientState() {
+  const now = new Date();
+  return now < OPEN_AT ? 'before' : now >= CLOSE_AT ? 'closed' : 'open';
+}
+
+function showState(state) {
+  $('#applyForm').classList.toggle('hidden', state !== 'open');
+  $('#lockCard').classList.toggle('hidden', state === 'open');
+  if (state === 'before') {
+    const days = Math.ceil((OPEN_AT - new Date()) / 86400000);
+    $('#lockBig').textContent = 'D-' + days;
+    $('#lockTitle').textContent = '11월 1일(일)부터 신청할 수 있어요';
+    $('#lockText').textContent = '신청 기간은 11월 1일(일)부터 11월 20일(금)까지입니다.';
+  } else if (state === 'closed') {
+    $('#lockBig').textContent = 'CLOSED';
+    $('#lockTitle').textContent = '강사 신청이 마감되었습니다';
+    $('#lockText').textContent = '11월 20일(금)에 신청이 마감되었습니다. 함께해 주셔서 감사합니다.';
+  }
+}
+
+/* ---------- 신청 ---------- */
+$('#applyForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.target;
+  const data = {
+    district: (f.district.value || '').trim(),
+    name: f.elements.name.value.trim(),
+    title: f.elements.title.value.trim(),
+    mode: (f.mode.value || '').trim(),
+  };
+  const err = !data.district ? '지구를 선택해 주세요.'
+    : !data.name ? '이름을 입력해 주세요.'
+    : !data.title ? '강의 제목을 입력해 주세요.'
+    : !data.mode ? '단강 또는 연강을 선택해 주세요.' : '';
+  if (err) return showMsg(err);
+
+  const btn = $('#submitBtn');
+  btn.disabled = true; btn.textContent = '신청 중…';
+  try {
+    const r = DEMO ? { ok: true, updated: false } : await apiPost(data);
+    if (!r.ok) return showMsg(r.error || '신청 중 문제가 생겼습니다.');
+    $('#formMsg').classList.add('hidden');
+    $('#doneTitle').textContent = r.updated ? '신청 내용이 수정되었습니다' : '신청이 완료되었습니다';
+    $('#doneList').innerHTML = [['지구', data.district], ['이름', data.name], ['제목', data.title], ['형태', data.mode]]
+      .map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
+    f.classList.add('hidden');
+    $('#doneCard').classList.remove('hidden');
+    window.scrollTo({ top: $('#doneCard').offsetTop - 16, behavior: 'smooth' });
+  } catch (_) {
+    showMsg('네트워크 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+  } finally {
+    btn.disabled = false; btn.textContent = '신청하기';
+  }
+});
+
+$('#againBtn').addEventListener('click', () => {
+  const f = $('#applyForm');
+  f.elements.title.value = '';
+  f.querySelectorAll('input[name=mode]').forEach(i => i.checked = false);
+  $('#doneCard').classList.add('hidden');
+  f.classList.remove('hidden');
+  f.elements.title.focus();
+});
+
+function showMsg(text) {
+  const m = $('#formMsg');
+  m.textContent = text; m.classList.remove('hidden');
+}
+
+/* ---------- 현황 (이름 없이) ---------- */
+async function loadStatus() {
+  let s;
+  try {
+    s = DEMO ? { ok: true, total: 0, districts: { 전주: 0, 군산: 0, 익산: 0 }, lectures: [] } : await apiGet({ action: 'status' });
+  } catch (_) { return; }
+  if (!s.ok) return;
+  $('#total').textContent = s.total;
+  $('#distGrid').innerHTML = DISTRICTS.map(d =>
+    `<div class="dist" style="background:${DIST_COLOR[d]}"><div class="l">${d}</div><div class="n">${s.districts[d] || 0}<small>개</small></div></div>`).join('');
+  $('#lecList').innerHTML = s.lectures.map(l =>
+    `<li><span class="pill d">${esc(l.district)}</span><span class="ttl">${esc(l.title)}</span><span class="pill">${esc(l.mode)}</span></li>`).join('');
+  $('#lecEmpty').classList.toggle('hidden', s.lectures.length > 0);
+  return s;
+}
+
+/* ---------- 시작 ---------- */
+(async function init() {
+  $('#demoBar').classList.toggle('hidden', !DEMO);
+  // 미리보기 모드에서는 ?open 을 붙이면 신청 폼을 미리 볼 수 있습니다
+  const preview = DEMO && new URLSearchParams(location.search).has('open');
+  showState(preview ? 'open' : clientState());
+  if (!DEMO) {
+    const s = await loadStatus().catch(() => null);
+    if (s && s.state) showState(s.state);
+  }
+})();
+</script>
+</body>
+</html>
