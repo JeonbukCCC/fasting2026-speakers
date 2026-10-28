@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>2026 금식수련회 선택특강 강사 모집</title>
-<meta name="description" content="2026 전북 CCC 금식수련회 선택특강 강사 신청 (전북 CCC 간사 대상, 11월 1일 ~ 20일)">
+<meta name="description" content="2026 전북 CCC 금식수련회 선택특강 강사 신청 (전북 CCC 간사 11월 1일 ~ 20일, 외부 강사 상시)">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&display=swap">
@@ -53,8 +53,9 @@
   label.field { display: block; margin-bottom: 14px; }
   label.field > span { display: block; font-size: 14px; font-weight: 700; margin-bottom: 6px; }
   label.field small { font-weight: 400; color: var(--muted); }
-  input[type=text] { width: 100%; font: inherit; font-size: 16px; padding: 11px 12px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); }
-  input:focus { outline: 2px solid var(--brand-2); outline-offset: 1px; }
+  input[type=text], input[type=tel], textarea { width: 100%; font: inherit; font-size: 16px; padding: 11px 12px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); }
+  textarea { resize: vertical; }
+  input:focus, textarea:focus { outline: 2px solid var(--brand-2); outline-offset: 1px; }
   .choices { display: grid; gap: 8px; margin-bottom: 14px; }
   .choices.three { grid-template-columns: repeat(3, 1fr); }
   .choices.two { grid-template-columns: repeat(2, 1fr); }
@@ -103,6 +104,7 @@
   ul.lec .ttl { font-weight: 700; flex: 1; min-width: 0; overflow-wrap: anywhere; }
   .pill { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 99px; background: var(--brand-soft); color: var(--brand); white-space: nowrap; }
   .pill.d { background: #eef0f6; color: var(--muted); }
+  .pill.ext { background: var(--sun); color: #6b5500; }
   .pill.area { font-family: var(--display); font-weight: 400; font-size: 14px; min-width: 26px; text-align: center; background: var(--brand); color: #fff; }
   .demo { background: var(--sun); color: #6b5500; font-size: 13px; padding: 8px 16px; text-align: center; }
   footer { text-align: center; font-size: 13px; color: var(--muted); padding: 0 16px 32px; }
@@ -119,7 +121,7 @@
   <div class="hero-band">
     <div class="eyebrow">JEONBUK CCC · FOR STAFF</div>
     <h1>2026 금식수련회<br>선택특강 강사 모집</h1>
-    <div class="meta"><span>전북 CCC 간사 대상</span><span>11월 1일(일) – 20일(금)</span></div>
+    <div class="meta"><span>전북 CCC 간사 · 외부 강사</span><span>간사 11월 1일(일) – 20일(금)</span></div>
   </div>
 </header>
 
@@ -135,8 +137,8 @@
     <div class="card">
       <h2>모집 안내</h2>
       <dl class="info">
-        <dt>대상</dt><dd>전북 CCC 간사</dd>
-        <dt>신청 기간</dt><dd>2026년 11월 1일(일) – 11월 20일(금)</dd>
+        <dt>대상</dt><dd>전북 CCC 간사(지구) · 외부 강사(소속)</dd>
+        <dt>신청 기간</dt><dd>CCC 간사: 11월 1일(일) – 20일(금)<br>외부 강사: 언제든 신청 가능</dd>
         <dt>수련회</dt><dd>12월 28일(월) – 30일(수) · 청정인성수련원</dd>
         <dt>교육 영역</dt><dd>G 하나님에 대해 · D 제자에 대해 · I 세상을 향해</dd>
         <dt>강의 형태</dt><dd>단강 또는 연강</dd>
@@ -144,28 +146,48 @@
       </dl>
     </div>
 
-    <div class="card lock-card hidden" data-lock>
-      <div class="dday"></div>
-      <h2></h2>
-      <p class="note"></p>
-    </div>
-
-    <form id="applyForm" class="hidden" data-open novalidate>
+    <form id="applyForm" novalidate>
       <div class="card">
-        <h2><span class="num">1</span>강사 정보</h2>
-        <span class="sub">지구</span>
-        <div class="choices three" data-districts></div>
-        <label class="field"><span>이름</span><input type="text" name="name" autocomplete="name" maxlength="20"></label>
+        <h2><span class="num">1</span>강사 구분</h2>
+        <div class="choices two" style="margin:0">
+          <label class="choice"><input type="radio" name="type" value="CCC 간사"><span><span class="t">전북 CCC 간사</span><span class="s">11월 1일 – 20일 신청</span></span></label>
+          <label class="choice"><input type="radio" name="type" value="외부 강사"><span><span class="t">외부 강사</span><span class="s">언제든 신청</span></span></label>
+        </div>
       </div>
 
-      <div class="card">
-        <h2><span class="num">2</span>강의</h2>
-        <div data-lecture-fields></div>
-        <p class="note" style="margin:0">아직 제목이 정해지지 않았다면 가제목으로 신청하고, 나중에 '신청 수정' 탭에서 진짜 제목으로 바꿀 수 있어요. 강의를 두 개 이상 하실 경우 강의마다 한 번씩 신청해 주세요.</p>
+      <div class="card lock-card hidden" data-lock>
+        <div class="dday"></div>
+        <h2></h2>
+        <p class="note"></p>
       </div>
 
-      <button class="btn" type="submit">신청하기</button>
-      <div class="msg err hidden" data-msg></div>
+      <div class="hidden" id="applyRest">
+        <div class="card">
+          <h2><span class="num">2</span>강사 정보</h2>
+          <div id="districtBox">
+            <span class="sub">지구</span>
+            <div class="choices three" data-districts></div>
+          </div>
+          <label class="field hidden" id="orgBox"><span>소속 <small>예: ○○교회, ○○선교회</small></span><input type="text" name="org" autocomplete="organization" maxlength="50"></label>
+          <label class="field"><span>이름</span><input type="text" name="name" autocomplete="name" maxlength="20"></label>
+          <label class="field" style="margin:0"><span>연락처 <small>필수 · 강의 안내에만 사용하고, 현황에는 보이지 않아요</small></span>
+            <input type="tel" name="phone" placeholder="010-1234-5678" inputmode="tel" autocomplete="tel"></label>
+        </div>
+
+        <div class="card">
+          <h2><span class="num">3</span>강의</h2>
+          <div data-lecture-fields></div>
+          <p class="note" style="margin:0">아직 제목이 정해지지 않았다면 가제목으로 신청하고, 나중에 '신청 수정' 탭에서 진짜 제목으로 바꿀 수 있어요. 강의를 두 개 이상 하실 경우 강의마다 한 번씩 신청해 주세요.</p>
+        </div>
+
+        <div class="card">
+          <h2><span class="num">4</span>준비 사항</h2>
+          <div data-prep-fields></div>
+        </div>
+
+        <button class="btn" type="submit">신청하기</button>
+        <div class="msg err hidden" data-msg></div>
+      </div>
     </form>
 
     <div class="card done hidden" id="doneCard">
@@ -177,19 +199,12 @@
 
   <!-- 신청 수정 -->
   <section class="panel" id="panel-edit">
-    <div class="card lock-card hidden" data-lock>
-      <div class="dday"></div>
-      <h2></h2>
-      <p class="note"></p>
-    </div>
-
-    <form id="findForm" class="hidden" data-open novalidate>
+    <form id="findForm" novalidate>
       <div class="card">
         <h2><span class="num">1</span>내 신청 찾기</h2>
-        <p class="note" style="margin-top:0">신청할 때 적은 지구와 이름으로 찾아요.</p>
-        <span class="sub">지구</span>
-        <div class="choices three" data-districts></div>
+        <p class="note" style="margin-top:0">신청할 때 적은 이름과 연락처로 찾아요. CCC 간사는 11월 1일 – 20일에만 수정할 수 있어요.</p>
         <label class="field"><span>이름</span><input type="text" name="name" autocomplete="name" maxlength="20"></label>
+        <label class="field"><span>연락처</span><input type="tel" name="phone" placeholder="010-1234-5678" inputmode="tel" autocomplete="tel"></label>
         <button class="btn" type="submit">찾기</button>
         <div class="msg err hidden" data-msg></div>
       </div>
@@ -197,13 +212,18 @@
 
     <div class="card hidden" id="mineCard">
       <h2><span class="num">2</span>고칠 강의 고르기</h2>
-      <div class="choices" id="mineList"></div>
+      <div class="choices" id="mineList" style="margin:0"></div>
+      <div class="msg err hidden" id="mineLock"></div>
     </div>
 
     <form id="editForm" class="hidden" novalidate>
       <div class="card">
         <h2><span class="num">3</span>강의 수정</h2>
         <div data-lecture-fields></div>
+      </div>
+      <div class="card">
+        <h2><span class="num">4</span>준비 사항</h2>
+        <div data-prep-fields></div>
       </div>
       <button class="btn" type="submit">수정 저장</button>
       <div class="msg err hidden" data-msg></div>
@@ -216,7 +236,7 @@
     <div class="card">
       <h2>신청 현황</h2>
       <div class="total"><b id="total">0</b><span>개 강의</span></div>
-      <p class="note" style="margin:8px 0 0">강의마다 정원 20명</p>
+      <p class="note" style="margin:8px 0 0" id="typeCount">강의마다 정원 20명</p>
     </div>
     <div class="dist-grid" id="distGrid" style="margin-bottom:14px"></div>
     <div class="card">
@@ -235,30 +255,43 @@
 <script>
 const API_URL = 'https://script.google.com/macros/s/AKfycbwUFm06oC7EEoktNOmJFmFy37Fea8XXY1B0BnJLgiv9Q8-4zc66nhBjE5lFpOrmKnCvIw/exec';
 const OPEN_AT = new Date('2026-11-01T00:00:00+09:00');
-const CLOSE_AT = new Date('2026-11-21T00:00:00+09:00'); // 11월 20일 자정까지
+const CLOSE_AT = new Date('2026-11-21T00:00:00+09:00'); // 11월 20일 자정까지 (CCC 간사만)
+const STAFF = 'CCC 간사';
 const DISTRICTS = ['전주', '군산', '익산'];
 const DIST_COLOR = { 전주: 'var(--jeonju)', 군산: 'var(--gunsan)', 익산: 'var(--iksan)' };
 const AREAS = { G: '하나님에 대해', D: '제자에 대해', I: '세상을 향해' };
 const MODES = { 단강: '한 번 진행하는 강의', 연강: '이어서 두 번 진행하는 강의' };
 const DEMO = !API_URL;
-const PREVIEW = new URLSearchParams(location.search).has('preview'); // 로컬 확인용: 기간과 상관없이 폼 열기
+const PREVIEW = new URLSearchParams(location.search).has('preview'); // 로컬 확인용: 간사 기간과 상관없이 폼 열기
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const areaText = a => AREAS[a] ? `${a} · ${AREAS[a]}` : a;
+let staffState = 'before'; // CCC 간사 신청 기간 상태
 
 /* ---------- 공통 입력 칸 ---------- */
+const radios = (name, items, cls = '') => items.map(([v, t, s]) =>
+  `<label class="choice ${cls}"><input type="radio" name="${name}" value="${v}"><span>${t}${s ? `<span class="s">${s}</span>` : ''}</span></label>`).join('');
+
 document.querySelectorAll('[data-districts]').forEach(el => {
-  el.innerHTML = DISTRICTS.map(d => `<label class="choice"><input type="radio" name="district" value="${d}"><span class="t">${d}</span></label>`).join('');
+  el.innerHTML = radios('district', DISTRICTS.map(d => [d, `<span class="t">${d}</span>`]));
 });
 document.querySelectorAll('[data-lecture-fields]').forEach(el => {
   el.innerHTML = `
     <span class="sub">교육 영역</span>
-    <div class="choices three">${Object.entries(AREAS).map(([k, v]) =>
-      `<label class="choice area"><input type="radio" name="area" value="${k}"><span><span class="letter">${k}</span><span class="s">${v}</span></span></label>`).join('')}</div>
+    <div class="choices three">${radios('area', Object.entries(AREAS).map(([k, v]) => [k, `<span class="letter">${k}</span>`, v]), 'area')}</div>
     <label class="field"><span>제목 <small>가제목도 괜찮아요</small></span><input type="text" name="title" maxlength="100" placeholder="선택특강 제목"></label>
     <span class="sub">단강 또는 연강</span>
-    <div class="choices two">${Object.entries(MODES).map(([k, v]) =>
-      `<label class="choice"><input type="radio" name="mode" value="${k}"><span><span class="t">${k}</span><span class="s">${v}</span></span></label>`).join('')}</div>`;
+    <div class="choices two">${radios('mode', Object.entries(MODES).map(([k, v]) => [k, `<span class="t">${k}</span>`, v]))}</div>`;
+});
+document.querySelectorAll('[data-prep-fields]').forEach(el => {
+  const yn = name => radios(name, [['있음', '<span class="t">있음</span>'], ['없음', '<span class="t">없음</span>']]);
+  el.innerHTML = `
+    <span class="sub">PPT가 있나요?</span>
+    <div class="choices two">${yn('ppt')}</div>
+    <span class="sub">강의안이 있나요?</span>
+    <div class="choices two">${yn('handout')}</div>
+    <label class="field" style="margin:0"><span>강의 때 도움이 필요한 것 <small>선택 · 예: 프로젝터, 마이크, 화이트보드, 인쇄</small></span>
+      <textarea name="help" rows="3" maxlength="300"></textarea></label>`;
 });
 
 /* ---------- API ---------- */
@@ -278,39 +311,64 @@ document.querySelectorAll('nav.tabs button').forEach(b => b.addEventListener('cl
   if (b.dataset.tab === 'status') loadStatus();
 }));
 
-/* ---------- 신청 기간 ---------- */
+/* ---------- 신청 기간 (CCC 간사만) ---------- */
 function clientState() {
   const now = new Date();
   return now < OPEN_AT ? 'before' : now >= CLOSE_AT ? 'closed' : 'open';
 }
 
-function showState(state) {
-  document.querySelectorAll('[data-open]').forEach(f => f.classList.toggle('hidden', state !== 'open'));
-  if (state !== 'open') ['#mineCard', '#editForm', '#doneCard'].forEach(s => $(s).classList.add('hidden'));
-  document.querySelectorAll('[data-lock]').forEach(card => {
-    card.classList.toggle('hidden', state === 'open');
-    const [big, title, text] = [card.querySelector('.dday'), card.querySelector('h2'), card.querySelector('.note')];
-    if (state === 'before') {
-      big.textContent = 'D-' + Math.ceil((OPEN_AT - new Date()) / 86400000);
-      title.textContent = '11월 1일(일)부터 신청할 수 있어요';
-      text.textContent = '신청과 수정은 11월 1일(일)부터 11월 20일(금)까지 할 수 있습니다.';
-    } else if (state === 'closed') {
-      big.textContent = 'CLOSED';
-      title.textContent = '강사 신청이 마감되었습니다';
-      text.textContent = '11월 20일(금)에 신청이 마감되었습니다. 제목을 바꿔야 하면 담당 간사에게 알려 주세요.';
-    }
-  });
+function staffLockText() {
+  if (staffState === 'before') return {
+    big: 'D-' + Math.ceil((OPEN_AT - new Date()) / 86400000),
+    title: 'CCC 간사 신청은 11월 1일(일)부터예요',
+    text: 'CCC 간사 신청과 수정은 11월 1일(일)부터 11월 20일(금)까지 할 수 있습니다.',
+  };
+  if (staffState === 'closed') return {
+    big: 'CLOSED',
+    title: 'CCC 간사 신청이 마감되었습니다',
+    text: '11월 20일(금)에 마감되었습니다. 제목을 바꿔야 하면 담당 간사에게 알려 주세요.',
+  };
+  return null;
 }
+
+// 강사 구분에 따라 신청 폼 열기 / 잠그기
+function updateApply() {
+  const type = ($('#applyForm').elements.type.value || '');
+  const lock = type === STAFF ? staffLockText() : null;
+  const card = $('[data-lock]');
+  card.classList.toggle('hidden', !lock);
+  if (lock) {
+    card.querySelector('.dday').textContent = lock.big;
+    card.querySelector('h2').textContent = lock.title;
+    card.querySelector('.note').textContent = lock.text;
+  }
+  $('#applyRest').classList.toggle('hidden', !type || !!lock);
+  // CCC 간사는 지구, 외부 강사는 소속
+  $('#districtBox').classList.toggle('hidden', type !== STAFF);
+  $('#orgBox').classList.toggle('hidden', type === STAFF);
+}
+$('#applyForm').addEventListener('change', e => { if (e.target.name === 'type') updateApply(); });
 
 function formData(f) {
   const v = n => (f.elements[n] && f.elements[n].value || '').trim();
-  return { district: v('district'), name: v('name'), area: v('area'), title: v('title'), mode: v('mode') };
+  return {
+    type: v('type'), district: v('district'), org: v('org'), name: v('name'), phone: v('phone'),
+    area: v('area'), title: v('title'), mode: v('mode'), ppt: v('ppt'), handout: v('handout'), help: v('help'),
+  };
 }
+
+const phoneOk = p => /^\d{9,11}$/.test(p.replace(/\D/g, ''));
 
 function checkLecture(d) {
   return !d.area ? '교육 영역(G·D·I)을 선택해 주세요.'
     : !d.title ? '강의 제목을 입력해 주세요.'
-    : !d.mode ? '단강 또는 연강을 선택해 주세요.' : '';
+    : !d.mode ? '단강 또는 연강을 선택해 주세요.'
+    : !d.ppt ? 'PPT가 있는지 선택해 주세요.'
+    : !d.handout ? '강의안이 있는지 선택해 주세요.' : '';
+}
+
+function checkPerson(d) {
+  return !d.name ? '이름을 입력해 주세요.' : !phoneOk(d.phone) ? '연락처를 정확히 입력해 주세요. (예: 010-1234-5678)' : '';
 }
 
 function showMsg(form, text) {
@@ -330,15 +388,21 @@ async function busy(btn, label, fn) {
 $('#applyForm').addEventListener('submit', async e => {
   e.preventDefault();
   const f = e.target, d = formData(f);
-  const err = !d.district ? '지구를 선택해 주세요.' : !d.name ? '이름을 입력해 주세요.' : checkLecture(d);
+  const err = !d.type ? '강사 구분을 선택해 주세요.'
+    : d.type === STAFF && !d.district ? '지구를 선택해 주세요.'
+    : d.type !== STAFF && !d.org ? '소속을 입력해 주세요.'
+    : checkPerson(d) || checkLecture(d);
   if (err) return showMsg(f, err);
+  if (d.type === STAFF) d.org = ''; else d.district = '';
 
   const r = await busy(f.querySelector('button[type=submit]'), '신청 중…', () => DEMO ? { ok: true, updated: false } : apiPost(d));
   if (!r.ok) return showMsg(f, r.error || '신청 중 문제가 생겼습니다.');
   showMsg(f, '');
   $('#doneTitle').textContent = r.updated ? '신청 내용이 수정되었습니다' : '신청이 완료되었습니다';
-  $('#doneList').innerHTML = [['지구', d.district], ['이름', d.name], ['영역', areaText(d.area)], ['제목', d.title], ['형태', d.mode], ['정원', '20명']]
-    .map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
+  $('#doneList').innerHTML = [
+    ['구분', d.type], d.type === STAFF ? ['지구', d.district] : ['소속', d.org], ['이름', d.name], ['연락처', d.phone], ['영역', areaText(d.area)],
+    ['제목', d.title], ['형태', d.mode], ['정원', '20명'], ['PPT', d.ppt], ['강의안', d.handout], ['도움 필요', d.help || '없음'],
+  ].map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
   f.classList.add('hidden');
   $('#doneCard').classList.remove('hidden');
   window.scrollTo({ top: $('#doneCard').offsetTop - 16, behavior: 'smooth' });
@@ -346,35 +410,37 @@ $('#applyForm').addEventListener('submit', async e => {
 
 $('#againBtn').addEventListener('click', () => {
   const f = $('#applyForm');
-  f.elements.title.value = '';
-  f.querySelectorAll('input[name=area], input[name=mode]').forEach(i => i.checked = false);
+  ['title', 'help'].forEach(n => f.elements[n].value = '');
+  f.querySelectorAll('input[name=area], input[name=mode], input[name=ppt], input[name=handout]').forEach(i => i.checked = false);
   $('#doneCard').classList.add('hidden');
   f.classList.remove('hidden');
   f.elements.title.focus();
 });
 
-/* ---------- 신청 수정 (지구 + 이름으로 찾기) ---------- */
-let mine = { district: '', name: '', lectures: [] };
+/* ---------- 신청 수정 (이름 + 연락처로 찾기) ---------- */
+let mine = { name: '', phone: '', lectures: [] };
 
 $('#findForm').addEventListener('submit', async e => {
   e.preventDefault();
   const f = e.target, d = formData(f);
-  if (!d.district || !d.name) return showMsg(f, '지구와 이름을 입력해 주세요.');
+  const err = checkPerson(d);
+  if (err) return showMsg(f, err);
   $('#editForm').classList.add('hidden');
+  $('#mineLock').classList.add('hidden');
   const r = await busy(f.querySelector('button[type=submit]'), '찾는 중…', () => DEMO
-    ? { ok: true, lectures: [{ row: 2, area: 'G', title: '(가제목) 금식과 기도', mode: '단강' }] }
-    : apiPost({ action: 'mine', district: d.district, name: d.name }));
+    ? { ok: true, lectures: [{ row: 2, type: '외부 강사', district: '', org: '○○교회', area: 'G', title: '(가제목) 금식과 기도', mode: '단강', ppt: '없음', handout: '있음', help: '' }] }
+    : apiPost({ action: 'mine', name: d.name, phone: d.phone }));
   if (!r.ok) return showMsg(f, r.error || '조회 중 문제가 생겼습니다.');
-  if (!r.lectures.length) { $('#mineCard').classList.add('hidden'); return showMsg(f, '신청 내역이 없습니다. 지구와 이름을 확인해 주세요.'); }
+  if (!r.lectures.length) { $('#mineCard').classList.add('hidden'); return showMsg(f, '신청 내역이 없습니다. 이름과 연락처를 확인해 주세요.'); }
   showMsg(f, '');
-  mine = { district: d.district, name: d.name, lectures: r.lectures };
+  mine = { name: d.name, phone: d.phone, lectures: r.lectures };
   renderMine();
 });
 
 function renderMine(selectedRow) {
   $('#mineList').innerHTML = mine.lectures.map(l => `
     <label class="choice"><input type="radio" name="pick" value="${l.row}"${l.row === selectedRow ? ' checked' : ''}>
-      <span><span class="t">${esc(l.title)}</span><span class="s">${esc(areaText(l.area))} · ${esc(l.mode)}</span></span></label>`).join('');
+      <span><span class="t">${esc(l.title)}</span><span class="s">${esc(l.type)} · ${esc(l.district || l.org)} · ${esc(areaText(l.area))} · ${esc(l.mode)}</span></span></label>`).join('');
   $('#mineCard').classList.remove('hidden');
   if (mine.lectures.length === 1 && !selectedRow) $('#mineList input').click();
 }
@@ -383,10 +449,15 @@ $('#mineList').addEventListener('change', e => {
   const l = mine.lectures.find(x => x.row === Number(e.target.value));
   if (!l) return;
   const f = $('#editForm');
+  const lock = l.type === STAFF && !PREVIEW ? staffLockText() : null;
+  $('#mineLock').textContent = lock ? lock.text : '';
+  $('#mineLock').classList.toggle('hidden', !lock);
+  f.classList.toggle('hidden', !!lock);
+  if (lock) return;
   f.elements.title.value = l.title;
-  f.querySelectorAll('input[name=area], input[name=mode]').forEach(i => i.checked = i.value === l.area || i.value === l.mode);
+  f.elements.help.value = l.help || '';
+  ['area', 'mode', 'ppt', 'handout'].forEach(n => f.querySelectorAll(`input[name=${n}]`).forEach(i => i.checked = i.value === l[n]));
   showMsg(f, ''); $('#editOk').classList.add('hidden');
-  f.classList.remove('hidden');
 });
 
 $('#editForm').addEventListener('submit', async e => {
@@ -395,28 +466,30 @@ $('#editForm').addEventListener('submit', async e => {
   const err = checkLecture(d);
   if (err) return showMsg(f, err);
   const row = Number(($('#mineList input:checked') || {}).value);
-  const body = { action: 'edit', row, district: mine.district, name: mine.name, area: d.area, title: d.title, mode: d.mode };
+  const body = { action: 'edit', row, name: mine.name, phone: mine.phone, area: d.area, title: d.title, mode: d.mode, ppt: d.ppt, handout: d.handout, help: d.help };
   const r = await busy(f.querySelector('button[type=submit]'), '저장 중…', () => DEMO ? { ok: true } : apiPost(body));
   if (!r.ok) return showMsg(f, r.error || '수정 중 문제가 생겼습니다.');
   showMsg(f, '');
-  Object.assign(mine.lectures.find(x => x.row === row), { area: d.area, title: d.title, mode: d.mode });
+  Object.assign(mine.lectures.find(x => x.row === row), { area: d.area, title: d.title, mode: d.mode, ppt: d.ppt, handout: d.handout, help: d.help });
   renderMine(row);
   const ok = $('#editOk');
   ok.textContent = '수정했습니다: ' + d.title; ok.classList.remove('hidden');
 });
 
-/* ---------- 현황 (이름 없이) ---------- */
+/* ---------- 현황 (이름·연락처 없이) ---------- */
 async function loadStatus() {
   let s;
   try {
-    s = DEMO ? { ok: true, total: 0, districts: { 전주: 0, 군산: 0, 익산: 0 }, lectures: [] } : await apiGet({ action: 'status' });
+    s = DEMO ? { ok: true, total: 0, districts: { 전주: 0, 군산: 0, 익산: 0 }, types: {}, lectures: [] } : await apiGet({ action: 'status' });
   } catch (_) { return; }
   if (!s.ok) return;
+  const types = s.types || {};
   $('#total').textContent = s.total;
+  $('#typeCount').textContent = `CCC 간사 ${types[STAFF] || 0}개 · 외부 강사 ${types['외부 강사'] || 0}개 · 강의마다 정원 20명`;
   $('#distGrid').innerHTML = DISTRICTS.map(d =>
     `<div class="dist" style="background:${DIST_COLOR[d]}"><div class="l">${d}</div><div class="n">${s.districts[d] || 0}<small>개</small></div></div>`).join('');
   $('#lecList').innerHTML = s.lectures.map(l =>
-    `<li><span class="pill area" title="${esc(AREAS[l.area] || '')}">${esc(l.area || '-')}</span><span class="ttl">${esc(l.title)}</span><span class="pill d">${esc(l.district)}</span><span class="pill">${esc(l.mode)}</span></li>`).join('');
+    `<li><span class="pill area" title="${esc(AREAS[l.area] || '')}">${esc(l.area || '-')}</span><span class="ttl">${esc(l.title)}</span>${l.type === STAFF ? '' : '<span class="pill ext">외부</span>'}<span class="pill d">${esc(l.district || l.org)}</span><span class="pill">${esc(l.mode)}</span></li>`).join('');
   $('#lecEmpty').classList.toggle('hidden', s.lectures.length > 0);
   return s;
 }
@@ -424,10 +497,11 @@ async function loadStatus() {
 /* ---------- 시작 ---------- */
 (async function init() {
   $('#demoBar').classList.toggle('hidden', !DEMO);
-  showState(PREVIEW ? 'open' : clientState());
+  staffState = PREVIEW ? 'open' : clientState();
+  updateApply();
   if (!DEMO) {
     const s = await loadStatus().catch(() => null);
-    if (s && s.state && !PREVIEW) showState(s.state);
+    if (s && s.state && !PREVIEW) { staffState = s.state; updateApply(); }
   }
 })();
 </script>
