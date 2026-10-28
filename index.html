@@ -42,7 +42,7 @@
   .hero-band .meta span + span::before { content: "|"; margin-right: 12px; opacity: .5; }
 
   main { margin-top: -56px; padding: 0 16px 48px; position: relative; }
-  nav.tabs { display: grid; grid-template-columns: repeat(2, 1fr); background: var(--card); border-radius: 16px; padding: 6px; gap: 4px; box-shadow: 0 10px 30px rgba(36,38,58,.25); }
+  nav.tabs { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--card); border-radius: 16px; padding: 6px; gap: 4px; box-shadow: 0 10px 30px rgba(36,38,58,.25); }
   nav.tabs button { border: 0; background: none; padding: 12px 6px; border-radius: 12px; font: inherit; font-weight: 700; font-size: 15px; color: var(--muted); cursor: pointer; }
   nav.tabs button[aria-selected="true"] { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; }
   section.panel { display: none; margin-top: 18px; }
@@ -63,6 +63,11 @@
   .choice:has(input:checked) { border-color: var(--brand-2); background: var(--brand-soft); box-shadow: inset 0 0 0 1px var(--brand-2); }
   .choice .t { font-weight: 700; }
   .choice .s { display: block; font-size: 13px; color: var(--muted); }
+  .choice.area { flex-direction: column; align-items: center; text-align: center; gap: 2px; padding: 12px 6px; }
+  .choice.area input { position: absolute; opacity: 0; pointer-events: none; }
+  .choice.area .letter { display: block; font-family: var(--display); font-size: 30px; line-height: 1.1; color: var(--peri); }
+  .choice.area:has(input:checked) .letter { color: var(--brand); }
+  .choice.area:has(input:focus-visible) { outline: 2px solid var(--brand-2); outline-offset: 1px; }
   .sub { display: block; font-size: 14px; font-weight: 700; margin: 0 0 6px; }
   .hidden { display: none !important; }
   .btn { display: block; width: 100%; border: 0; border-radius: 14px; padding: 16px; font: inherit; font-size: 17px; font-weight: 800; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; cursor: pointer; box-shadow: 0 8px 20px rgba(58,43,140,.25); }
@@ -70,8 +75,9 @@
   .btn.ghost { background: #fff; color: var(--brand); box-shadow: inset 0 0 0 2px var(--brand-2); margin-top: 10px; }
   .msg { border-radius: 12px; padding: 12px 14px; font-size: 14px; margin-top: 12px; }
   .msg.err { background: var(--warn-soft); color: #7d2a1e; }
+  .msg.ok { background: var(--ok-soft); color: #1f5a3f; }
   .note { font-size: 13px; color: var(--muted); }
-  .info { display: grid; grid-template-columns: 72px 1fr; gap: 6px 12px; margin: 0; font-size: 15px; }
+  .info { display: grid; grid-template-columns: 76px 1fr; gap: 6px 12px; margin: 0; font-size: 15px; }
   .info dt { color: var(--muted); }
   .info dd { margin: 0; font-weight: 600; }
   .lock-card { text-align: center; padding: 32px 20px; }
@@ -97,10 +103,11 @@
   ul.lec .ttl { font-weight: 700; flex: 1; min-width: 0; overflow-wrap: anywhere; }
   .pill { display: inline-block; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 99px; background: var(--brand-soft); color: var(--brand); white-space: nowrap; }
   .pill.d { background: #eef0f6; color: var(--muted); }
+  .pill.area { font-family: var(--display); font-weight: 400; font-size: 14px; min-width: 26px; text-align: center; background: var(--brand); color: #fff; }
   .demo { background: var(--sun); color: #6b5500; font-size: 13px; padding: 8px 16px; text-align: center; }
   footer { text-align: center; font-size: 13px; color: var(--muted); padding: 0 16px 32px; }
   footer .verse { font-family: var(--display); font-size: 18px; letter-spacing: .04em; color: var(--brand); margin-bottom: 4px; }
-  @media (max-width: 480px) { .dist-grid { grid-template-columns: 1fr; } .hero-band { margin-top: -64px; } }
+  @media (max-width: 480px) { .dist-grid { grid-template-columns: 1fr; } nav.tabs button { font-size: 14px; padding: 12px 2px; } .hero-band { margin-top: -64px; } }
 </style>
 </head>
 <body>
@@ -119,6 +126,7 @@
 <main class="wrap">
   <nav class="tabs" role="tablist">
     <button role="tab" data-tab="apply" aria-selected="true">강사 신청</button>
+    <button role="tab" data-tab="edit" aria-selected="false">신청 수정</button>
     <button role="tab" data-tab="status" aria-selected="false">신청 현황</button>
   </nav>
 
@@ -130,41 +138,34 @@
         <dt>대상</dt><dd>전북 CCC 간사</dd>
         <dt>신청 기간</dt><dd>2026년 11월 1일(일) – 11월 20일(금)</dd>
         <dt>수련회</dt><dd>12월 28일(월) – 30일(수) · 청정인성수련원</dd>
-        <dt>강의 형태</dt><dd>단강 또는 연강 중에서 골라 주세요</dd>
+        <dt>교육 영역</dt><dd>G 하나님에 대해 · D 제자에 대해 · I 세상을 향해</dd>
+        <dt>강의 형태</dt><dd>단강 또는 연강</dd>
+        <dt>정원</dt><dd>강의마다 20명</dd>
       </dl>
     </div>
 
-    <div class="card lock-card hidden" id="lockCard">
-      <div class="dday" id="lockBig"></div>
-      <h2 id="lockTitle"></h2>
-      <p class="note" id="lockText"></p>
+    <div class="card lock-card hidden" data-lock>
+      <div class="dday"></div>
+      <h2></h2>
+      <p class="note"></p>
     </div>
 
-    <form id="applyForm" class="hidden" novalidate>
+    <form id="applyForm" class="hidden" data-open novalidate>
       <div class="card">
         <h2><span class="num">1</span>강사 정보</h2>
         <span class="sub">지구</span>
-        <div class="choices three">
-          <label class="choice"><input type="radio" name="district" value="전주"><span class="t">전주</span></label>
-          <label class="choice"><input type="radio" name="district" value="군산"><span class="t">군산</span></label>
-          <label class="choice"><input type="radio" name="district" value="익산"><span class="t">익산</span></label>
-        </div>
+        <div class="choices three" data-districts></div>
         <label class="field"><span>이름</span><input type="text" name="name" autocomplete="name" maxlength="20"></label>
       </div>
 
       <div class="card">
         <h2><span class="num">2</span>강의</h2>
-        <label class="field"><span>제목</span><input type="text" name="title" maxlength="100" placeholder="선택특강 제목"></label>
-        <span class="sub">단강 또는 연강</span>
-        <div class="choices two">
-          <label class="choice"><input type="radio" name="mode" value="단강"><span><span class="t">단강</span><span class="s">한 번 진행하는 강의</span></span></label>
-          <label class="choice"><input type="radio" name="mode" value="연강"><span><span class="t">연강</span><span class="s">이어서 두 번 진행하는 강의</span></span></label>
-        </div>
-        <p class="note" style="margin:0">강의를 두 개 이상 하실 경우, 강의마다 한 번씩 신청해 주세요. 같은 지구·이름·제목으로 다시 신청하면 강의 형태만 바뀝니다.</p>
+        <div data-lecture-fields></div>
+        <p class="note" style="margin:0">아직 제목이 정해지지 않았다면 가제목으로 신청하고, 나중에 '신청 수정' 탭에서 진짜 제목으로 바꿀 수 있어요. 강의를 두 개 이상 하실 경우 강의마다 한 번씩 신청해 주세요.</p>
       </div>
 
-      <button class="btn" id="submitBtn" type="submit">신청하기</button>
-      <div class="msg err hidden" id="formMsg"></div>
+      <button class="btn" type="submit">신청하기</button>
+      <div class="msg err hidden" data-msg></div>
     </form>
 
     <div class="card done hidden" id="doneCard">
@@ -174,11 +175,48 @@
     </div>
   </section>
 
+  <!-- 신청 수정 -->
+  <section class="panel" id="panel-edit">
+    <div class="card lock-card hidden" data-lock>
+      <div class="dday"></div>
+      <h2></h2>
+      <p class="note"></p>
+    </div>
+
+    <form id="findForm" class="hidden" data-open novalidate>
+      <div class="card">
+        <h2><span class="num">1</span>내 신청 찾기</h2>
+        <p class="note" style="margin-top:0">신청할 때 적은 지구와 이름으로 찾아요.</p>
+        <span class="sub">지구</span>
+        <div class="choices three" data-districts></div>
+        <label class="field"><span>이름</span><input type="text" name="name" autocomplete="name" maxlength="20"></label>
+        <button class="btn" type="submit">찾기</button>
+        <div class="msg err hidden" data-msg></div>
+      </div>
+    </form>
+
+    <div class="card hidden" id="mineCard">
+      <h2><span class="num">2</span>고칠 강의 고르기</h2>
+      <div class="choices" id="mineList"></div>
+    </div>
+
+    <form id="editForm" class="hidden" novalidate>
+      <div class="card">
+        <h2><span class="num">3</span>강의 수정</h2>
+        <div data-lecture-fields></div>
+      </div>
+      <button class="btn" type="submit">수정 저장</button>
+      <div class="msg err hidden" data-msg></div>
+      <div class="msg ok hidden" id="editOk"></div>
+    </form>
+  </section>
+
   <!-- 신청 현황 -->
   <section class="panel" id="panel-status">
     <div class="card">
       <h2>신청 현황</h2>
       <div class="total"><b id="total">0</b><span>개 강의</span></div>
+      <p class="note" style="margin:8px 0 0">강의마다 정원 20명</p>
     </div>
     <div class="dist-grid" id="distGrid" style="margin-bottom:14px"></div>
     <div class="card">
@@ -200,9 +238,28 @@ const OPEN_AT = new Date('2026-11-01T00:00:00+09:00');
 const CLOSE_AT = new Date('2026-11-21T00:00:00+09:00'); // 11월 20일 자정까지
 const DISTRICTS = ['전주', '군산', '익산'];
 const DIST_COLOR = { 전주: 'var(--jeonju)', 군산: 'var(--gunsan)', 익산: 'var(--iksan)' };
+const AREAS = { G: '하나님에 대해', D: '제자에 대해', I: '세상을 향해' };
+const MODES = { 단강: '한 번 진행하는 강의', 연강: '이어서 두 번 진행하는 강의' };
 const DEMO = !API_URL;
+const PREVIEW = new URLSearchParams(location.search).has('preview'); // 로컬 확인용: 기간과 상관없이 폼 열기
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const areaText = a => AREAS[a] ? `${a} · ${AREAS[a]}` : a;
+
+/* ---------- 공통 입력 칸 ---------- */
+document.querySelectorAll('[data-districts]').forEach(el => {
+  el.innerHTML = DISTRICTS.map(d => `<label class="choice"><input type="radio" name="district" value="${d}"><span class="t">${d}</span></label>`).join('');
+});
+document.querySelectorAll('[data-lecture-fields]').forEach(el => {
+  el.innerHTML = `
+    <span class="sub">교육 영역</span>
+    <div class="choices three">${Object.entries(AREAS).map(([k, v]) =>
+      `<label class="choice area"><input type="radio" name="area" value="${k}"><span><span class="letter">${k}</span><span class="s">${v}</span></span></label>`).join('')}</div>
+    <label class="field"><span>제목 <small>가제목도 괜찮아요</small></span><input type="text" name="title" maxlength="100" placeholder="선택특강 제목"></label>
+    <span class="sub">단강 또는 연강</span>
+    <div class="choices two">${Object.entries(MODES).map(([k, v]) =>
+      `<label class="choice"><input type="radio" name="mode" value="${k}"><span><span class="t">${k}</span><span class="s">${v}</span></span></label>`).join('')}</div>`;
+});
 
 /* ---------- API ---------- */
 async function apiGet(params) {
@@ -228,68 +285,125 @@ function clientState() {
 }
 
 function showState(state) {
-  $('#applyForm').classList.toggle('hidden', state !== 'open');
-  $('#lockCard').classList.toggle('hidden', state === 'open');
-  if (state === 'before') {
-    const days = Math.ceil((OPEN_AT - new Date()) / 86400000);
-    $('#lockBig').textContent = 'D-' + days;
-    $('#lockTitle').textContent = '11월 1일(일)부터 신청할 수 있어요';
-    $('#lockText').textContent = '신청 기간은 11월 1일(일)부터 11월 20일(금)까지입니다.';
-  } else if (state === 'closed') {
-    $('#lockBig').textContent = 'CLOSED';
-    $('#lockTitle').textContent = '강사 신청이 마감되었습니다';
-    $('#lockText').textContent = '11월 20일(금)에 신청이 마감되었습니다. 함께해 주셔서 감사합니다.';
-  }
+  document.querySelectorAll('[data-open]').forEach(f => f.classList.toggle('hidden', state !== 'open'));
+  if (state !== 'open') ['#mineCard', '#editForm', '#doneCard'].forEach(s => $(s).classList.add('hidden'));
+  document.querySelectorAll('[data-lock]').forEach(card => {
+    card.classList.toggle('hidden', state === 'open');
+    const [big, title, text] = [card.querySelector('.dday'), card.querySelector('h2'), card.querySelector('.note')];
+    if (state === 'before') {
+      big.textContent = 'D-' + Math.ceil((OPEN_AT - new Date()) / 86400000);
+      title.textContent = '11월 1일(일)부터 신청할 수 있어요';
+      text.textContent = '신청과 수정은 11월 1일(일)부터 11월 20일(금)까지 할 수 있습니다.';
+    } else if (state === 'closed') {
+      big.textContent = 'CLOSED';
+      title.textContent = '강사 신청이 마감되었습니다';
+      text.textContent = '11월 20일(금)에 신청이 마감되었습니다. 제목을 바꿔야 하면 담당 간사에게 알려 주세요.';
+    }
+  });
+}
+
+function formData(f) {
+  const v = n => (f.elements[n] && f.elements[n].value || '').trim();
+  return { district: v('district'), name: v('name'), area: v('area'), title: v('title'), mode: v('mode') };
+}
+
+function checkLecture(d) {
+  return !d.area ? '교육 영역(G·D·I)을 선택해 주세요.'
+    : !d.title ? '강의 제목을 입력해 주세요.'
+    : !d.mode ? '단강 또는 연강을 선택해 주세요.' : '';
+}
+
+function showMsg(form, text) {
+  const m = form.querySelector('[data-msg]');
+  m.textContent = text; m.classList.toggle('hidden', !text);
+}
+
+async function busy(btn, label, fn) {
+  const old = btn.textContent;
+  btn.disabled = true; btn.textContent = label;
+  try { return await fn(); }
+  catch (_) { return { ok: false, error: '네트워크 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.' }; }
+  finally { btn.disabled = false; btn.textContent = old; }
 }
 
 /* ---------- 신청 ---------- */
 $('#applyForm').addEventListener('submit', async e => {
   e.preventDefault();
-  const f = e.target;
-  const data = {
-    district: (f.district.value || '').trim(),
-    name: f.elements.name.value.trim(),
-    title: f.elements.title.value.trim(),
-    mode: (f.mode.value || '').trim(),
-  };
-  const err = !data.district ? '지구를 선택해 주세요.'
-    : !data.name ? '이름을 입력해 주세요.'
-    : !data.title ? '강의 제목을 입력해 주세요.'
-    : !data.mode ? '단강 또는 연강을 선택해 주세요.' : '';
-  if (err) return showMsg(err);
+  const f = e.target, d = formData(f);
+  const err = !d.district ? '지구를 선택해 주세요.' : !d.name ? '이름을 입력해 주세요.' : checkLecture(d);
+  if (err) return showMsg(f, err);
 
-  const btn = $('#submitBtn');
-  btn.disabled = true; btn.textContent = '신청 중…';
-  try {
-    const r = DEMO ? { ok: true, updated: false } : await apiPost(data);
-    if (!r.ok) return showMsg(r.error || '신청 중 문제가 생겼습니다.');
-    $('#formMsg').classList.add('hidden');
-    $('#doneTitle').textContent = r.updated ? '신청 내용이 수정되었습니다' : '신청이 완료되었습니다';
-    $('#doneList').innerHTML = [['지구', data.district], ['이름', data.name], ['제목', data.title], ['형태', data.mode]]
-      .map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
-    f.classList.add('hidden');
-    $('#doneCard').classList.remove('hidden');
-    window.scrollTo({ top: $('#doneCard').offsetTop - 16, behavior: 'smooth' });
-  } catch (_) {
-    showMsg('네트워크 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
-  } finally {
-    btn.disabled = false; btn.textContent = '신청하기';
-  }
+  const r = await busy(f.querySelector('button[type=submit]'), '신청 중…', () => DEMO ? { ok: true, updated: false } : apiPost(d));
+  if (!r.ok) return showMsg(f, r.error || '신청 중 문제가 생겼습니다.');
+  showMsg(f, '');
+  $('#doneTitle').textContent = r.updated ? '신청 내용이 수정되었습니다' : '신청이 완료되었습니다';
+  $('#doneList').innerHTML = [['지구', d.district], ['이름', d.name], ['영역', areaText(d.area)], ['제목', d.title], ['형태', d.mode], ['정원', '20명']]
+    .map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
+  f.classList.add('hidden');
+  $('#doneCard').classList.remove('hidden');
+  window.scrollTo({ top: $('#doneCard').offsetTop - 16, behavior: 'smooth' });
 });
 
 $('#againBtn').addEventListener('click', () => {
   const f = $('#applyForm');
   f.elements.title.value = '';
-  f.querySelectorAll('input[name=mode]').forEach(i => i.checked = false);
+  f.querySelectorAll('input[name=area], input[name=mode]').forEach(i => i.checked = false);
   $('#doneCard').classList.add('hidden');
   f.classList.remove('hidden');
   f.elements.title.focus();
 });
 
-function showMsg(text) {
-  const m = $('#formMsg');
-  m.textContent = text; m.classList.remove('hidden');
+/* ---------- 신청 수정 (지구 + 이름으로 찾기) ---------- */
+let mine = { district: '', name: '', lectures: [] };
+
+$('#findForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.target, d = formData(f);
+  if (!d.district || !d.name) return showMsg(f, '지구와 이름을 입력해 주세요.');
+  $('#editForm').classList.add('hidden');
+  const r = await busy(f.querySelector('button[type=submit]'), '찾는 중…', () => DEMO
+    ? { ok: true, lectures: [{ row: 2, area: 'G', title: '(가제목) 금식과 기도', mode: '단강' }] }
+    : apiPost({ action: 'mine', district: d.district, name: d.name }));
+  if (!r.ok) return showMsg(f, r.error || '조회 중 문제가 생겼습니다.');
+  if (!r.lectures.length) { $('#mineCard').classList.add('hidden'); return showMsg(f, '신청 내역이 없습니다. 지구와 이름을 확인해 주세요.'); }
+  showMsg(f, '');
+  mine = { district: d.district, name: d.name, lectures: r.lectures };
+  renderMine();
+});
+
+function renderMine(selectedRow) {
+  $('#mineList').innerHTML = mine.lectures.map(l => `
+    <label class="choice"><input type="radio" name="pick" value="${l.row}"${l.row === selectedRow ? ' checked' : ''}>
+      <span><span class="t">${esc(l.title)}</span><span class="s">${esc(areaText(l.area))} · ${esc(l.mode)}</span></span></label>`).join('');
+  $('#mineCard').classList.remove('hidden');
+  if (mine.lectures.length === 1 && !selectedRow) $('#mineList input').click();
 }
+
+$('#mineList').addEventListener('change', e => {
+  const l = mine.lectures.find(x => x.row === Number(e.target.value));
+  if (!l) return;
+  const f = $('#editForm');
+  f.elements.title.value = l.title;
+  f.querySelectorAll('input[name=area], input[name=mode]').forEach(i => i.checked = i.value === l.area || i.value === l.mode);
+  showMsg(f, ''); $('#editOk').classList.add('hidden');
+  f.classList.remove('hidden');
+});
+
+$('#editForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.target, d = formData(f);
+  const err = checkLecture(d);
+  if (err) return showMsg(f, err);
+  const row = Number(($('#mineList input:checked') || {}).value);
+  const body = { action: 'edit', row, district: mine.district, name: mine.name, area: d.area, title: d.title, mode: d.mode };
+  const r = await busy(f.querySelector('button[type=submit]'), '저장 중…', () => DEMO ? { ok: true } : apiPost(body));
+  if (!r.ok) return showMsg(f, r.error || '수정 중 문제가 생겼습니다.');
+  showMsg(f, '');
+  Object.assign(mine.lectures.find(x => x.row === row), { area: d.area, title: d.title, mode: d.mode });
+  renderMine(row);
+  const ok = $('#editOk');
+  ok.textContent = '수정했습니다: ' + d.title; ok.classList.remove('hidden');
+});
 
 /* ---------- 현황 (이름 없이) ---------- */
 async function loadStatus() {
@@ -302,7 +416,7 @@ async function loadStatus() {
   $('#distGrid').innerHTML = DISTRICTS.map(d =>
     `<div class="dist" style="background:${DIST_COLOR[d]}"><div class="l">${d}</div><div class="n">${s.districts[d] || 0}<small>개</small></div></div>`).join('');
   $('#lecList').innerHTML = s.lectures.map(l =>
-    `<li><span class="pill d">${esc(l.district)}</span><span class="ttl">${esc(l.title)}</span><span class="pill">${esc(l.mode)}</span></li>`).join('');
+    `<li><span class="pill area" title="${esc(AREAS[l.area] || '')}">${esc(l.area || '-')}</span><span class="ttl">${esc(l.title)}</span><span class="pill d">${esc(l.district)}</span><span class="pill">${esc(l.mode)}</span></li>`).join('');
   $('#lecEmpty').classList.toggle('hidden', s.lectures.length > 0);
   return s;
 }
@@ -310,12 +424,10 @@ async function loadStatus() {
 /* ---------- 시작 ---------- */
 (async function init() {
   $('#demoBar').classList.toggle('hidden', !DEMO);
-  // 미리보기 모드에서는 ?open 을 붙이면 신청 폼을 미리 볼 수 있습니다
-  const preview = DEMO && new URLSearchParams(location.search).has('open');
-  showState(preview ? 'open' : clientState());
+  showState(PREVIEW ? 'open' : clientState());
   if (!DEMO) {
     const s = await loadStatus().catch(() => null);
-    if (s && s.state) showState(s.state);
+    if (s && s.state && !PREVIEW) showState(s.state);
   }
 })();
 </script>
